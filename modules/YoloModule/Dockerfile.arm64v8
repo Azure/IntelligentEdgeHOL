@@ -13,7 +13,7 @@ WORKDIR /usr/sdk
 RUN python -m virtualenv --python=python3 env3
 RUN source env3/bin/activate && pip install --upgrade pip && pip install -U setuptools wheel
 
-RUN git clone --recursive --depth=1 https://github.com/Azure/azure-iot-sdk-python.git src
+RUN git clone --recursive --branch release_2019_01_03 --depth=1 https://github.com/Azure/azure-iot-sdk-python.git src
 
 # Build for Python 3
 RUN add-apt-repository ppa:deadsnakes/ppa
@@ -43,8 +43,16 @@ RUN cp /usr/local/src/darknet/libdarknet.so /app/libdarknet.so
 COPY /build/requirements.txt ./
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
-RUN pip3 install tornado==4.5.3 trollius && \
-    pip3 install -U youtube-dl
+RUN pip3 install tornado==4.5.3 trollius 
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends zip pandoc && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth=1 https://github.com/ytdl-org/youtube-dl.git && \
+    cd youtube-dl && \
+    make && \
+    make install
 
 ADD /app/ .
 
