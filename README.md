@@ -12,7 +12,7 @@ urlFragment: "https://github.com/Azure/IntelligentEdgeHOL"
 
 ![](https://pbs.twimg.com/media/D_ANZnbWsAA4EVK.jpg)
 
-The IntelligentEdgeHOL walks through the process of deploying an [IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge?WT.mc_id=github-IntelligentEdgeHOL-pdecarlo) module to an Nvidia Jetson Nano device to allow for detection of objects in YouTube videos, RTSP streams, Hololens Mixed Reality Capture, or an attached web cam. It achieves performance of around 10 frames per second for most video data.    
+The IntelligentEdgeHOL walks through the process of deploying an [IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge?WT.mc_id=github-IntelligentEdgeHOL-pdecarlo) module to an Nvidia Jetson Nano device to allow for detection of objects in YouTube videos, RTSP streams, Hololens Mixed Reality Capture, or an attached web cam. It achieves performance of around 10 frames per second for most video data.  Micheleen Harris has created [a fork of this project](https://github.com/michhar/IntelligentEdgeHOL-YOLOv4) which targets Jetson Xavier devices using YOLOv4 to achieve even higher performance and accuracy. 
 
 The module ships as a fully self-contained docker image totalling around 5.5GB.  This image contains all necessary dependencies including the [Nvidia Linux for Tegra Drivers](https://developer.nvidia.com/embedded/linux-tegra) for Jetson Nano, [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit), [NVIDIA CUDA Deep Neural Network library (CUDNN)](https://developer.nvidia.com/cudnn), [OpenCV](https://github.com/opencv/opencv), and [Darknet](https://github.com/AlexeyAB/darknet). For details on how the base images are built, see the included `docker` folder.
 
